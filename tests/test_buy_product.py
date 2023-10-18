@@ -9,6 +9,7 @@ from pages.login_page import LoginPage
 def test_buy_product():
     o = Options()
     o.add_experimental_option("detach", True)
+    o.add_experimental_option('excludeSwitches', ['enable-logging'])
     driver = webdriver.Chrome(options=o)
 
     login = LoginPage(driver)
@@ -18,4 +19,4 @@ def test_buy_product():
     shopping_cart = WebDriverWait(driver, 5).until(ec.element_to_be_clickable((By.XPATH,
                                                                                "//a[@class='shopping_cart_link']")))
     shopping_cart.click()
-    print("Перешли в корзину.")
+    print("Переход в корзину.")

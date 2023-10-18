@@ -5,7 +5,6 @@ from base.base_class import Base
 
 
 class LoginPage(Base):
-
     url_login_page = 'https://www.saucedemo.com/'
 
     def __init__(self, driver):
@@ -17,7 +16,6 @@ class LoginPage(Base):
     password = "//input[@id='password']"
     login_button = "//input[@id='login-button']"
 
-
     # Getters
     def get_user_name(self):
         return WebDriverWait(self.driver, 5).until(ec.element_to_be_clickable((By.XPATH, self.user_name)))
@@ -27,7 +25,6 @@ class LoginPage(Base):
 
     def get_login_button(self):
         return WebDriverWait(self.driver, 5).until(ec.element_to_be_clickable((By.XPATH, self.login_button)))
-
 
     # Actions
     def input_user_name(self, user_name):
@@ -42,10 +39,10 @@ class LoginPage(Base):
         self.get_login_button().click()
         print("Нажатие на кнопку Login.")
 
-
     # Methods
     def authorization(self):
         self.driver.get(self.url_login_page)
+        self.get_current_url()
         self.input_user_name('standard_user')
         self.input_password('secret_sauce')
         self.click_login_button()

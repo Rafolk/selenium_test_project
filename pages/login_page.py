@@ -1,23 +1,51 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
+from base.base_class import Base
 
 
-class LoginPage:
+class LoginPage(Base):
+
+    url_login_page = 'https://www.saucedemo.com/'
+
+    def __init__(self, driver):
+        super().__init__(driver)
+        self.driver = driver
+
+    # Locators
+    user_name = "//input[@id='user-name']"
+    password = "//input[@id='password']"
+    login_button = "//input[@id='login-button']"
 
 
-    def authorization(self, driver, login_name, login_password):
-        user_name = WebDriverWait(driver, 5).until(ec.element_to_be_clickable((By.XPATH,
-                                                                                   "//input[@id='user-name']")))
-        user_name.send_keys(login_name)
-        print("Введён логин.")
+    # Getters
+    def get_user_name(self):
+        return WebDriverWait(self.driver, 5).until(ec.element_to_be_clickable((By.XPATH, self.user_name)))
 
-        password = WebDriverWait(driver, 5).until(ec.element_to_be_clickable((By.XPATH,
-                                                                                   "//input[@id='password']")))
-        password.send_keys(login_password)
-        print("Введён пароль.")
+    def get_password(self):
+        return WebDriverWait(self.driver, 5).until(ec.element_to_be_clickable((By.XPATH, self.password)))
 
-        button_login = WebDriverWait(driver, 5).until(ec.element_to_be_clickable((By.XPATH,
-                                                                                      "//input[@id='login-button']")))
-        button_login.click()
-        print("Вход по кнопке Login.")
+    def get_login_button(self):
+        return WebDriverWait(self.driver, 5).until(ec.element_to_be_clickable((By.XPATH, self.login_button)))
+
+
+    # Actions
+    def input_user_name(self, user_name):
+        self.get_user_name().send_keys(user_name)
+        print("Ввод имени пользователя.")
+
+    def input_password(self, password):
+        self.get_password().send_keys(password)
+        print("Ввод пароля.")
+
+    def click_login_button(self):
+        self.get_login_button().click()
+        print("Нажатие на кнопку Login.")
+
+
+    # Methods
+    def authorization(self):
+        self.driver.get(self.url_login_page)
+        self.input_user_name('standard_user')
+        self.input_password('secret_sauce')
+        self.click_login_button()

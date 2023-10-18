@@ -20,8 +20,8 @@ class TestSelectProduct:
         login_standard_user = 'standard_user'
         password_all = 'secret_sauce'
 
-        login = LoginPage(driver)
-        login.authorization(login_standard_user, password_all)
+        login = LoginPage()
+        login.authorization(driver, login_standard_user, password_all)
 
         select_product = WebDriverWait(driver, 5).until(ec.element_to_be_clickable((By.XPATH, "//button["
                                                                                              "@id='add-to-cart-sauce-labs-backpack']")))

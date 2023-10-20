@@ -4,18 +4,15 @@ from selenium.webdriver.support.wait import WebDriverWait
 from base.base_class import Base
 
 
-class LoginPage(Base):
-    url_login_page = 'https://www.saucedemo.com/'
+class MainPage(Base):
 
     def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver
 
     # Locators
-    user_name = "//input[@id='user-name']"
-    password = "//input[@id='password']"
-    login_button = "//input[@id='login-button']"
-    text_main_page = "//span[@class='title']"
+    product_1 = "//input[@id='user-name']"
+    cart = "//a[@class='shopping_cart_link']"
 
     # Getters
     def get_user_name(self):

@@ -13,6 +13,8 @@ class MainPage(Base):
     # Locators
     add_to_cart_product_1 = "//button[@id='add-to-cart-sauce-labs-backpack']"
     cart = "//div[@id='shopping_cart_container']"
+    burger_menu = "//button[@id='react-burger-menu-btn']"
+    link_about = "//a[@id='about_sidebar_link']"
 
     # Getters
     def get_add_to_cart_product_1(self):
@@ -20,6 +22,12 @@ class MainPage(Base):
 
     def get_cart(self):
         return WebDriverWait(self.driver, 5).until(ec.element_to_be_clickable((By.XPATH, self.cart)))
+
+    def get_burger_menu(self):
+        return WebDriverWait(self.driver, 5).until(ec.element_to_be_clickable((By.XPATH, self.burger_menu)))
+
+    def get_link_about(self):
+        return WebDriverWait(self.driver, 5).until(ec.element_to_be_clickable((By.XPATH, self.link_about)))
 
     # Actions
     def click_add_to_cart_product_1(self):
@@ -30,8 +38,22 @@ class MainPage(Base):
         self.get_cart().click()
         print("Переход в корзину.")
 
+    def click_burger_menu(self):
+        self.get_burger_menu().click()
+        print("Открытие бокового меню.")
+
+    def click_link_about(self):
+        self.get_link_about().click()
+        print("Переход на ссылку About.")
+
     # Methods
     def add_to_cart_product(self):
         self.click_add_to_cart_product_1()
         self.go_to_cart()
         self.get_current_url()
+
+    def go_to_link_about(self):
+        self.click_burger_menu()
+        self.click_link_about()
+        self.get_current_url()
+        self.get_assert_current_url('https://saucelabs.com/')

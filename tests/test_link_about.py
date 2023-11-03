@@ -4,12 +4,7 @@ from pages.login_page import LoginPage
 from pages.main_page import MainPage
 
 
-def test_link_about():
-    o = Options()
-    o.add_experimental_option("detach", True)
-    o.add_experimental_option('excludeSwitches', ['enable-logging'])
-    driver = webdriver.Chrome(options=o)
-
+def test_link_about(driver):
     login = LoginPage(driver)
     login.authorization()
 

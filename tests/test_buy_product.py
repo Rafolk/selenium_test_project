@@ -18,16 +18,48 @@ def test_buy_product_1():
     login.authorization()
 
     add_and_go_to_cart = MainPage(driver)
-    add_and_go_to_cart.add_to_cart_product()
+    add_and_go_to_cart.methods_add_to_cart_product_1()
 
     confirm_order_in_cart = CartPage(driver)
     confirm_order_in_cart.confirm_cart_content()
 
-    input_and_confirm_checkout_information = CheckoutInformationPage(driver)
-    input_and_confirm_checkout_information.input_and_confirm_checkout_information()
 
-    checkout_overview_page = CheckoutOverviewPage(driver)
-    checkout_overview_page.finish_order()
+def test_buy_product_2():
+    o = Options()
+    o.add_experimental_option("detach", True)
+    o.add_experimental_option('excludeSwitches', ['enable-logging'])
+    driver = webdriver.Chrome(options=o)
 
-    back_to_products_page = BackProductsPage(driver)
-    back_to_products_page.back_to_products_page()
+    login = LoginPage(driver)
+    login.authorization()
+
+    add_and_go_to_cart = MainPage(driver)
+    add_and_go_to_cart.methods_add_to_cart_product_2()
+
+    confirm_order_in_cart = CartPage(driver)
+    confirm_order_in_cart.confirm_cart_content()
+
+def test_buy_product_3():
+    o = Options()
+    o.add_experimental_option("detach", True)
+    o.add_experimental_option('excludeSwitches', ['enable-logging'])
+    driver = webdriver.Chrome(options=o)
+
+    login = LoginPage(driver)
+    login.authorization()
+
+    add_and_go_to_cart = MainPage(driver)
+    add_and_go_to_cart.methods_add_to_cart_product_3()
+
+    confirm_order_in_cart = CartPage(driver)
+    confirm_order_in_cart.confirm_cart_content()
+
+
+    # input_and_confirm_checkout_information = CheckoutInformationPage(driver)
+    # input_and_confirm_checkout_information.input_and_confirm_checkout_information()
+    #
+    # checkout_overview_page = CheckoutOverviewPage(driver)
+    # checkout_overview_page.finish_order()
+    #
+    # back_to_products_page = BackProductsPage(driver)
+    # back_to_products_page.back_to_products_page()

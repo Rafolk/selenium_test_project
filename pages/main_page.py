@@ -12,6 +12,8 @@ class MainPage(Base):
 
     # Locators
     add_to_cart_product_1 = "//button[@id='add-to-cart-sauce-labs-backpack']"
+    add_to_cart_product_2 = "//button[@id='add-to-cart-sauce-labs-bike-light']"
+    add_to_cart_product_3 = "//button[@id='add-to-cart-sauce-labs-bolt-t-shirt']"
     cart = "//div[@id='shopping_cart_container']"
     burger_menu = "//button[@id='react-burger-menu-btn']"
     link_about = "//a[@id='about_sidebar_link']"
@@ -19,6 +21,12 @@ class MainPage(Base):
     # Getters
     def get_add_to_cart_product_1(self):
         return WebDriverWait(self.driver, 5).until(ec.element_to_be_clickable((By.XPATH, self.add_to_cart_product_1)))
+
+    def get_add_to_cart_product_2(self):
+        return WebDriverWait(self.driver, 5).until(ec.element_to_be_clickable((By.XPATH, self.add_to_cart_product_2)))
+
+    def get_add_to_cart_product_3(self):
+        return WebDriverWait(self.driver, 5).until(ec.element_to_be_clickable((By.XPATH, self.add_to_cart_product_3)))
 
     def get_cart(self):
         return WebDriverWait(self.driver, 5).until(ec.element_to_be_clickable((By.XPATH, self.cart)))
@@ -34,6 +42,14 @@ class MainPage(Base):
         self.get_add_to_cart_product_1().click()
         print("Добавление в корзину товара 'Sauce Labs Backpack' (первый товар).")
 
+    def click_add_to_cart_product_2(self):
+        self.get_add_to_cart_product_2().click()
+        print("Добавление в корзину товара 'Sauce Labs Bike Light' (второй товар).")
+
+    def click_add_to_cart_product_3(self):
+        self.get_add_to_cart_product_3().click()
+        print("Добавление в корзину товара 'Sauce Labs Bolt T-Shirt' (третий товар).")
+
     def go_to_cart(self):
         self.get_cart().click()
         print("Переход в корзину.")
@@ -47,8 +63,18 @@ class MainPage(Base):
         print("Переход на ссылку About.")
 
     # Methods
-    def add_to_cart_product(self):
+    def methods_add_to_cart_product_1(self):
         self.click_add_to_cart_product_1()
+        self.go_to_cart()
+        self.get_current_url()
+
+    def methods_add_to_cart_product_2(self):
+        self.click_add_to_cart_product_2()
+        self.go_to_cart()
+        self.get_current_url()
+
+    def methods_add_to_cart_product_3(self):
+        self.click_add_to_cart_product_3()
         self.go_to_cart()
         self.get_current_url()
 

@@ -6,10 +6,6 @@ from base.base_class import Base
 
 class MainPage(Base):
 
-    def __init__(self, driver):
-        super().__init__(driver)
-        self.driver = driver
-
     # Locators
     add_to_cart_product_1 = "//button[@id='add-to-cart-sauce-labs-backpack']"
     add_to_cart_product_2 = "//button[@id='add-to-cart-sauce-labs-bike-light']"

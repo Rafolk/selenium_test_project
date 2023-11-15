@@ -7,10 +7,6 @@ from faker import Faker
 
 class CheckoutInformationPage(Base):
 
-    def __init__(self, driver):
-        super().__init__(driver)
-        self.driver = driver
-
     # Locators
     first_name_field = "//input[@id='first-name']"
     last_name_field = "//input[@id='last-name']"

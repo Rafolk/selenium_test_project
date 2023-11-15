@@ -6,10 +6,6 @@ from base.base_class import Base
 
 class BackProductsPage(Base):
 
-    def __init__(self, driver):
-        super().__init__(driver)
-        self.driver = driver
-
     # Locators
     back_to_products_button = "//button[@id='back-to-products']"
 

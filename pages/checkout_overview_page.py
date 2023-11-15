@@ -6,10 +6,6 @@ from base.base_class import Base
 
 class CheckoutOverviewPage(Base):
 
-    def __init__(self, driver):
-        super().__init__(driver)
-        self.driver = driver
-
     # Locators
     finish_button = "//button[@id='finish']"
 
